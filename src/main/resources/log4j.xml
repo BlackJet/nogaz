@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="nogazAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="V:\\logs\\nogaz\\sc.log"/>
+        <param name="MaxFileSize" value="10000KB"/>
+        <param name="MaxBackupIndex" value="1"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="nogaz">
+        <level value="all"/>
+        <appender-ref ref="nogazAppender"/>
+    </logger>
+
+    <appender name="hiberLog" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="V:\\logs\\nogaz\\hiber.log"/>
+        <param name="MaxFileSize" value="10000KB"/>
+        <param name="MaxBackupIndex" value="1"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+    <logger name="org.hibernate.SQL">
+        <level value="all"/>
+        <appender-ref ref="hiberLog"/>
+    </logger>
+
+</log4j:configuration>

@@ -14,6 +14,8 @@ public class User {
 
     Integer id;
 
+    String login;
+
     String name;
 
     Date createDate;
@@ -28,6 +30,15 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Column
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     @Column

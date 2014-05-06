@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="hibernateProperties">
+            <value>
+                hibernate.c3p0.min_size=1
+                hibernate.c3p0.max_size=10
+                hibernate.c3p0.acquire_increment=1
+                hibernate.c3p0.timeout=100
+                hibernate.c3p0.idle_test_period=100
+                hibernate.c3p0.max_statements=0
+                hibernate.c3p0.debugUnreturnedConnectionStackTraces=true
+                hibernate.c3p0.unreturnedConnectionTimeout=11400
+                hibernate.c3p0.maxConnectionAge=10800
+                hibernate.c3p0.identityToken=sessionFactory
+                hibernate.dialect=su.ivt.sc.conf.SCPostgreSQLDialect
+                <!--hibernate.cache.use_second_level_cache=true-->
+                <!--hibernate.cache.region.factory_class=net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory-->
+                <!--net.sf.ehcache.configurationResourceName=/ehcache-hibernate.xml-->
+                hibernate.cache.use_query_cache=false
+                hibernate.generate_statistics=true
+                hibernate.hbm2ddl.auto=NONE
+                hibernate.show_sql=true
+                hibernate.use_sql_comments=true
+                hibernate.connection.SetBigStringTryClob=true
+                hibernate.connection.driver_class=org.postgresql.Driver
+                hibernate.connection.provider_class=org.hibernate.connection.C3P0ConnectionProvider
+                hibernate.connection.url=${jdbc.url}
+                hibernate.connection.username=${jdbc.username}
+                hibernate.connection.password=${jdbc.password}
+            </value>
+        </property>
+        <property name="packagesToScan" value="nogaz.domain" />
+        <!--<property name="entityInterceptor" ref="interceptor"/>-->
+    </bean>
+</beans>
