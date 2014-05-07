@@ -7,6 +7,13 @@
 </head>
 <body>
 
+<ul class="posts">
+    <li class="post-item">C++</li>
+    <li class="post-item">Java</li>
+    <li class="post-item">Python</li>
+
+</ul>
+
 
 
 </body>

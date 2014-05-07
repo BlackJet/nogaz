@@ -1,6 +1,10 @@
 package nogaz.dao;
 
+import nogaz.domain.User;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 /**
  * User: user
@@ -8,6 +12,14 @@ import org.springframework.stereotype.Repository;
  * Time: 15:16
  */
 @Repository
-public class UserDao {
+public class UserDao extends EntityDao {
+
+    @Autowired
+    SessionFactory sessionFactory;
+
+    public UserDao() {
+        this.clazz = User.class;
+    }
+
 
 }

@@ -6,6 +6,10 @@
 
     <context:component-scan base-package="nogaz"/>
 
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="WEB-INF/settings.properties"/>
+    </bean>
+
     <import resource="spring-hibernate.xml"/>
 
 </beans>

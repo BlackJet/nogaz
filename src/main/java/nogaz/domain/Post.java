@@ -21,6 +21,8 @@ public class Post {
 
     User author;
 
+    public Post() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {

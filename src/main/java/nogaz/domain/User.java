@@ -1,6 +1,10 @@
 package nogaz.domain;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -9,7 +13,8 @@ import java.util.Date;
  * Time: 22:48
  */
 @Entity
-@Table(name = "user")
+@org.hibernate.annotations.Entity(dynamicInsert = true)
+@Table(name = "`user`")
 public class User {
 
     Integer id;
@@ -21,6 +26,14 @@ public class User {
     Date createDate;
 
     String passHash;
+
+    public User() {}
+
+    public User(String login, String name, String passHash) {
+        this.login = login;
+        this.name = name;
+        this.passHash = passHash;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

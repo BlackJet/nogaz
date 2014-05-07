@@ -1,7 +1,12 @@
 package nogaz.controller;
 
+import nogaz.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,13 +19,21 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    UserService userService;
+
+    @Transactional
+    @RequestMapping(method = RequestMethod.POST)
     public void saveUser(HttpServletRequest request) {
-        String name = (String) request.getAttribute("name");
-        String login = (String) request.getAttribute("login");
-        String pass = (String) request.getAttribute("password");
+        String name = request.getParameter("name");
+        String login = request.getParameter("login");
+        String pass = request.getParameter("password");
+        userService.create(name, login, pass);
+    }
 
-
-
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String getForm(ModelMap map) {
+        return "add_user";
     }
 
 }
